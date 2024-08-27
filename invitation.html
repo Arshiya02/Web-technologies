@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arshiya's Birthday Party Invitation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffd700;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #ff69b4;
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        p {
+            color: #333;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+        .balloon {
+            font-size: 50px;
+            margin: 10px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .balloon:hover {
+            transform: scale(1.2);
+        }
+        .rsvp {
+            background-color: #ff69b4;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .rsvp:hover {
+            background-color: #ff1493;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎉 Arshiya's Birthday Bash! 🎉</h1>
+        <p>You're invited to join us for a day full of fun, laughter, and celebration!</p>
+        <p>🗓 Date: 2 August</p>
+        <p>🕒 Time:6.00pm</p>
+        <p>📍 Location:Party palas</p>
+        <p>Pop the balloons for a surprise!</p>
+        <div id="balloons">
+            <span class="balloon" onclick="popBalloon(this)">🎈</span>
+            <span class="balloon" onclick="popBalloon(this)">🎈</span>
+            <span class="balloon" onclick="popBalloon(this)">🎈</span>
+            <span class="balloon" onclick="popBalloon(this)">🎈</span>
+            <span class="balloon" onclick="popBalloon(this)">🎈</span>
+        </div>
+        <p>Don't miss out on the excitement!</p>
+        <button class="rsvp" onclick="rsvp()">RSVP Now</button>
+    </div>
+
+    <script>
+        function popBalloon(balloon) {
+            const surprises = ['🍰', '🎁', '🍭', '🎊', '🥳'];
+            balloon.textContent = surprises[Math.floor(Math.random() * surprises.length)];
+            balloon.onclick = null;
+        }
+
+        function rsvp() {
+            alert("Thank you for RSVPing! We can't wait to see you at Arshiya's party!");
+        }
+    </script>
+</body>
+</html>

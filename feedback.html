@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohana Mantra - Event Feedback</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #333;
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 600px;
+            position: relative;
+            overflow: hidden;
+        }
+        h1 {
+            color: #4a4a4a;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            position: relative;
+        }
+        h1::after {
+            content: '🎵';
+            position: absolute;
+            top: -10px;
+            right: -40px;
+            font-size: 0.6em;
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(10deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+        form {
+            display: grid;
+            gap: 20px;
+        }
+        label {
+            font-weight: 600;
+            margin-bottom: 5px;
+            display: block;
+            color: #4a4a4a;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 10px rgba(102, 126, 234, 0.5);
+        }
+        button {
+            background-color: #667eea;
+            color: white;
+            cursor: pointer;
+            font-size: 18px;
+            padding: 12px;
+            border: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        button:hover {
+            background-color: #764ba2;
+            transform: scale(1.05);
+        }
+        .rating {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .rating input {
+            display: none;
+        }
+        .rating label {
+            cursor: pointer;
+            width: 50px;
+            height: 50px;
+            background-color: #ddd;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+        .rating input:checked + label {
+            background-color: #ffd700;
+            transform: scale(1.1);
+        }
+        .fun-element {
+            position: absolute;
+            font-size: 2em;
+            opacity: 0.2;
+            pointer-events: none;
+            transition: all 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Mohana Mantra Feedback</h1>
+        <form id="feedbackForm">
+            <div>
+                <label for="name">Your Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            
+            <div>
+                <label for="email">Email Address:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            
+            <div>
+                <label>Overall Experience:</label>
+                <div class="rating">
+                    <input type="radio" id="star5" name="rating" value="5" required>
+                    <label for="star5">5</label>
+                    <input type="radio" id="star4" name="rating" value="4">
+                    <label for="star4">4</label>
+                    <input type="radio" id="star3" name="rating" value="3">
+                    <label for="star3">3</label>
+                    <input type="radio" id="star2" name="rating" value="2">
+                    <label for="star2">2</label>
+                    <input type="radio" id="star1" name="rating" value="1">
+                    <label for="star1">1</label>
+                </div>
+            </div>
+            
+            <div>
+                <label for="favorite">Favorite Part of the Event:</label>
+                <select id="favorite" name="favorite" required>
+                    <option value="">Select an option</option>
+                    <option value="music">Music Performance</option>
+                    <option value="atmosphere">Atmosphere</option>
+                    <option value="venue">Venue</option>
+                    <option value="crowd">Crowd Energy</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            
+            <div>
+                <label for="improvements">Suggestions for Improvement:</label>
+                <textarea id="improvements" name="improvements" rows="4" placeholder="Share your ideas to make Mohana Mantra even better!"></textarea>
+            </div>
+            
+            <div>
+                <label for="future">What would you like to see in future Mohana Mantra events?</label>
+                <textarea id="future" name="future" rows="4" placeholder="Your creative ideas are welcome!"></textarea>
+            </div>
+            
+            <button type="submit">Submit Feedback</button>
+        </form>
+        <div class="fun-element" style="top: 10px; left: 10px;">🎶</div>
+        <div class="fun-element" style="top: 50px; right: 20px;">🎸</div>
+        <div class="fun-element" style="bottom: 30px; left: 30px;">🥁</div>
+        <div class="fun-element" style="bottom: 10px; right: 10px;">🎹</div>
+    </div>
+
+    <script>
+        document.getElementById('feedbackForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert("Thank you for your valuable feedback! Your insights will help make future Mohana Mantra events even more magical!");
+            // Here you would typically send the form data to a server
+        });
+
+        // Add some interactivity to the fun elements
+        document.querySelectorAll('.fun-element').forEach(element => {
+            element.addEventListener('mouseover', () => {
+                element.style.transform = 'scale(1.2) rotate(10deg)';
+                element.style.opacity = '1';
+            });
+            element.addEventListener('mouseout', () => {
+                element.style.transform = 'scale(1) rotate(0deg)';
+                element.style.opacity = '0.2';
+            });
+        });
+    </script>
+</body>
+</html>

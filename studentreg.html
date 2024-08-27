@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Awesome College Registration</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 600px;
+            position: relative;
+            overflow: hidden;
+        }
+        h1 {
+            color: #4a4a4a;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            position: relative;
+        }
+        h1::after {
+            content: '🎓';
+            position: absolute;
+            top: -10px;
+            right: -40px;
+            font-size: 0.6em;
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        form {
+            display: grid;
+            gap: 20px;
+        }
+        label {
+            font-weight: 600;
+            margin-bottom: 5px;
+            display: block;
+            color: #4a4a4a;
+        }
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        input:focus, select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 10px rgba(102, 126, 234, 0.5);
+        }
+        input[type="submit"] {
+            background-color: #667eea;
+            color: white;
+            cursor: pointer;
+            font-size: 18px;
+            padding: 12px;
+            border: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        input[type="submit"]:hover {
+            background-color: #764ba2;
+            transform: scale(1.05);
+        }
+        .fun-element {
+            position: absolute;
+            font-size: 2em;
+            opacity: 0.2;
+            pointer-events: none;
+            transition: all 0.3s ease;
+        }
+        #confetti {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+        }
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background-color: #ddd;
+            border-radius: 5px;
+            margin-top: 20px;
+            overflow: hidden;
+        }
+        .progress {
+            width: 0%;
+            height: 100%;
+            background-color: #667eea;
+            transition: width 0.5s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Join Our Awesome College!</h1>
+        <form id="collegeForm" onsubmit="return submitForm(event)">
+            <div>
+                <label for="name">Your Fantastic Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            
+            <div>
+                <label for="email">Email of Brilliance:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            
+            <div>
+                <label for="dob">Date of Awesomeness (DOB):</label>
+                <input type="date" id="dob" name="dob" required>
+            </div>
+            
+            <div>
+                <label for="major">Choose Your Epic Major:</label>
+                <select id="major" name="major" required>
+                    <option value="">Select a Major</option>
+                    <option value="computerScience">Computer Science 💻</option>
+                    <option value="biology">Biology 🧬</option>
+                    <option value="psychology">Psychology 🧠</option>
+                    <option value="literature">Literature 📚</option>
+                    <option value="engineering">Engineering 🛠️</option>
+                </select>
+            </div>
+            
+            <div>
+                <label for="excitement">Excitement Level (1-10):</label>
+                <input type="range" id="excitement" name="excitement" min="1" max="10" required>
+            </div>
+            
+            <div>
+                <label for="funFact">Share a Fun Fact About Yourself:</label>
+                <input type="text" id="funFact" name="funFact" required>
+            </div>
+            
+            <div>
+                <input type="submit" value="Start My College Adventure!">
+            </div>
+        </form>
+        <div class="progress-bar">
+            <div class="progress" id="formProgress"></div>
+        </div>
+        <div class="fun-element" style="top: 10px; left: 10px;">📚</div>
+        <div class="fun-element" style="top: 50px; right: 20px;">🎨</div>
+        <div class="fun-element" style="bottom: 30px; left: 30px;">⚽</div>
+        <div class="fun-element" style="bottom: 10px; right: 10px;">🔬</div>
+    </div>
+    <canvas id="confetti"></canvas>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <script>
+        function submitForm(event) {
+            event.preventDefault();
+            // Here you would typically send the form data to a server
+            // For this example, we'll just show a success message and confetti
+            alert("Congratulations! You're now part of our amazing college community! 🎉");
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { y: 0.6 }
+            });
+            return false;
+        }
+
+        // Add some interactivity to the fun elements
+        document.querySelectorAll('.fun-element').forEach(element => {
+            element.addEventListener('mouseover', () => {
+                element.style.transform = 'scale(1.2) rotate(10deg)';
+                element.style.opacity = '1';
+            });
+            element.addEventListener('mouseout', () => {
+                element.style.transform = 'scale(1) rotate(0deg)';
+                element.style.opacity = '0.2';
+            });
+        });
+
+        // Update progress bar as user fills out the form
+        const form = document.getElementById('collegeForm');
+        const progressBar = document.getElementById('formProgress');
+        const inputs = form.querySelectorAll('input, select');
+
+        function updateProgress() {
+            const totalFields = inputs.length;
+            let filledFields = 0;
+            inputs.forEach(input => {
+                if (input.value !== '') filledFields++;
+            });
+            const progress = (filledFields / totalFields) * 100;
+            progressBar.style.width = `${progress}%`;
+        }
+
+        inputs.forEach(input => {
+            input.addEventListener('input', updateProgress);
+        });
+
+        // Add excitement level indicator
+        const excitementInput = document.getElementById('excitement');
+        const excitementLabel = document.querySelector('label[for="excitement"]');
+        excitementInput.addEventListener('input', (e) => {
+            const value = e.target.value;
+            const emojis = ['😐', '🙂', '😊', '😄', '😃', '😁', '😆', '🤩', '🎉', '🚀'];
+            excitementLabel.textContent = `Excitement Level (${value}/10): ${emojis[value-1]}`;
+        });
+    </script>
+</body>
+</html>

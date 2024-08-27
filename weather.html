@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Report Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            background-image:;
+            margin: 0;
+            padding: 20px;
+        }
+        header {
+            text-align: center;
+            padding: 20px;
+            background-color: #4682b4;
+            color: white;
+        }
+        .container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .current-weather, .forecast {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 48%;
+        }
+        h2 {
+            color: #4682b4;
+        }
+        .forecast-day {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .forecast-day:last-child {
+            border-bottom: none;
+        }
+        .temperature {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Weather Report Dashboard</h1>
+</header>
+
+<div class="container">
+    <div class="current-weather">
+        <h2>Current Weather</h2>
+        <p><strong>Location:</strong> New York City</p>
+        <p><strong>Temperature:</strong> <span class="temperature">75°F</span></p>
+        <p><strong>Condition:</strong> Sunny</p>
+        <p><strong>Humidity:</strong> 60%</p>
+        <p><strong>Wind Speed:</strong> 5 mph</p>
+    </div>
+
+    <div class="forecast">
+        <h2>5-Day Forecast</h2>
+        <div class="forecast-day">
+            <span>Monday</span>
+            <span class="temperature">76°F</span>
+        </div>
+        <div class="forecast-day">
+            <span>Tuesday</span>
+            <span class="temperature">78°F</span>
+        </div>
+        <div class="forecast-day">
+            <span>Wednesday</span>
+            <span class="temperature">74°F</span>
+        </div>
+        <div class="forecast-day">
+            <span>Thursday</span>
+            <span class="temperature">72°F</span>
+        </div>
+        <div class="forecast-day">
+            <span>Friday</span>
+            <span class="temperature">70°F</span>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

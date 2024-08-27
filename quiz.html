@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive SQL Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+        .quiz-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .question {
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+        .options {
+            display: flex;
+            flex-direction: column;
+        }
+        .option {
+            margin: 5px 0;
+            padding: 10px;
+            background-color: #e0e0e0;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .option:hover {
+            background-color: #d0d0d0;
+        }
+        .feedback {
+            text-align: center;
+            font-size: 24px;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        .next-btn {
+            display: block;
+            margin: 20px auto 0;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .next-btn:hover {
+            background-color: #45a049;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>SQL Quiz</h1>
+        <div id="question-container"></div>
+        <div id="feedback" class="feedback"></div>
+        <button id="next-btn" class="next-btn hidden">Next Question</button>
+    </div>
+
+    <script>
+        const questions = [
+            {
+                question: "What does SQL stand for?",
+                options: ["Structured Query Language", "Simple Question Language", "Structured Question Logic", "System Query Language"],
+                correctAnswer: 0
+            },
+            {
+                question: "Which SQL statement is used to extract data from a database?",
+                options: ["GET", "EXTRACT", "SELECT", "OPEN"],
+                correctAnswer: 2
+            },
+            {
+                question: "Which SQL clause is used to filter the results of a SELECT statement?",
+                options: ["FILTER", "WHERE", "HAVING", "GROUP BY"],
+                correctAnswer: 1
+            },
+            {
+                question: "What is the purpose of the GROUP BY clause in SQL?",
+                options: ["To sort the result set", "To filter rows before grouping", "To group rows that have the same values", "To join multiple tables"],
+                correctAnswer: 2
+            },
+            {
+                question: "Which SQL function is used to count the number of rows that match the specified criteria?",
+                options: ["COUNT()", "SUM()", "AVG()", "MAX()"],
+                correctAnswer: 0
+            },
+            {
+                question: "Which SQL statement is used to update data in a database?",
+                options: ["SAVE", "MODIFY", "UPDATE", "CHANGE"],
+                correctAnswer: 2
+            }
+        ];
+
+        let currentQuestion = 0;
+        const questionContainer = document.getElementById('question-container');
+        const feedbackElement = document.getElementById('feedback');
+        const nextButton = document.getElementById('next-btn');
+
+        function displayQuestion() {
+            const question = questions[currentQuestion];
+            let html = `<div class="question">${currentQuestion + 1}. ${question.question}</div>`;
+            html += '<div class="options">';
+            for (let i = 0; i < question.options.length; i++) {
+                html += `<button class="option" onclick="checkAnswer(${i})">${question.options[i]}</button>`;
+            }
+            html += '</div>';
+            questionContainer.innerHTML = html;
+            feedbackElement.textContent = '';
+            nextButton.classList.add('hidden');
+        }
+
+        function checkAnswer(selectedAnswer) {
+            const question = questions[currentQuestion];
+            if (selectedAnswer === question.correctAnswer) {
+                feedbackElement.textContent = '🎉 Correct! Applause! 👏';
+                feedbackElement.style.color = 'green';
+            } else {
+                feedbackElement.textContent = '❌ Incorrect. Try again!';
+                feedbackElement.style.color = 'red';
+                return;
+            }
+            nextButton.classList.remove('hidden');
+        }
+
+        nextButton.addEventListener('click', () => {
+            currentQuestion++;
+            if (currentQuestion < questions.length) {
+                displayQuestion();
+            } else {
+                questionContainer.innerHTML = '<h2>Quiz Completed!</h2><p>Great job! You\'ve finished the SQL quiz.</p>';
+                feedbackElement.textContent = '';
+                nextButton.classList.add('hidden');
+            }
+        });
+
+        displayQuestion();
+    </script>
+</body>
+</html>
